@@ -1,6 +1,6 @@
 # Elixir Learning
 
-A code repo for my sample codes while learnin Elixir
+A code repo for my sample codes while learning Elixir
 
 ## Requirements
 You'll need the following installed on your machine.
