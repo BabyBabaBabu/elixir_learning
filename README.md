@@ -21,4 +21,4 @@ To run my code you need to pull/clone a branch
 
 To execute an elixir script, run
 
-```elixir <script name>```
+```elixir <script name>.exs```
