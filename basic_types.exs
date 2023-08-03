@@ -37,7 +37,9 @@ IO.puts('hello' == "hello")
 
 # Functions
 sum = fn a,b -> a + b end # define anonymous function and store in variable sum
-IO.puts(sum.(2,3)) # invoke/call by using the dot between variable and parentheses,
+IO.puts(sum.(2,3)) # invoked/called by using the dot between variable and parentheses
+# function arity is no. of arguments it needs eg func/2,  needs to be supplied with two args
+# to see usage/docs of a function run in iex> h func/arity
 
 # testing a value type
 IO.puts(is_boolean(false))
@@ -60,5 +62,5 @@ IO.puts( [104, 101, 108, 108, 111] ) # interpreted as printable ASCII Characters
 # Tuples ->stored contiguously/adjacent in memory, access by index, zero-based index
 mytuple = {:ok, "awesome"}
 IO.puts( tuple_size(mytuple))
-put_elem(mytuple, 1, "world") # modifies tuple elemebt at location in index returns {:ok, world}, a new tuple
+put_elem(mytuple, 1, "world") # modifies tuple element at location in index 1, returns {:ok, world}, a new tuple
 IO.puts(elem(mytuple, 1)) # returns element in index 1 of tuple
