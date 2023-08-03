@@ -60,5 +60,5 @@ IO.puts(head)
 
 # Cannot invoke a function on the left side of a pattern match
 mylist = [1,3,4]
-# length mylist = 3 # throws an argument error
+# length mylist = 3 # throws an ArgumentError
 IO.puts(3 = length mylist)
