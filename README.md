@@ -16,7 +16,8 @@ To check if successfully installed, run
 ```elixir --version```
 
 ## Usage
-To run my code you need to pull/clone a branch 
+To run my code you need to pull/clone a branch
+
 ```git clone -b <branch name> https://github.com/BabyBabaBabu/elixir_learning.git```
 
 To execute an elixir script, run
