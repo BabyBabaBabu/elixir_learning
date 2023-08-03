@@ -14,10 +14,10 @@ end
 
 # name = "Kitaa"
 case "Alex" do
-  ^name -> IO.puts("Hello") # may use ^ point operator to prevent rebinding, thus match aginst an existing variable
+  ^name -> IO.puts("Hello") # may use ^ point operator to prevent rebinding, thus match against an existing variable
   "Kyalo" -> IO.puts("Hey")
   "Alex" -> IO.puts("Howdy")
-  _ -> IO.puts("Hi") # underscore used to many any other value
+  _ -> IO.puts("Hi") # underscore used to match any other value
 end
 
 # matching a tuple, using guards
