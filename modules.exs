@@ -28,9 +28,8 @@ defmodule Math do
   end
 
   # multiple clauses function
-  # functions that return boolean have a trailing ? after function name
   # clause one
-  def zero?(0) do
+  def zero?(0) do   # functions that return boolean have a trailing ? after function name
     true
   end
   # clause two
@@ -47,24 +46,59 @@ IO.puts(Math.zero?(1))
 # by using the & capture operator for named functions
 # you can assign a named function to a variable
 # you can also capture local/imported functions
-checkfunc = &is_function/1
-
 mysum = &Math.sum/2
-iszero = &Math.zero?/2
+iszero = &Math.zero?/1
+checkfunc = &is_function/1
 
 IO.puts(is_function(mysum))
 IO.puts(mysum.(1,2))
 IO.puts(checkfunc.(iszero))
+IO.puts(iszero.(0))
 
-# capturing can also be used on operator
-multiply = &*/2
+# capturing can also be used on operators
+multiply = &*/2 # multiply operator
 IO.puts(multiply.(2,3))
 
 # capturing functions can also be used to create short functions
+# &(function definition)
 name = "Alex"
 greetings = &("Howdy #{&1}") # &1 is the first agrunment, we use #{} to interpolate the passed argument
 IO.puts(greetings.(name))
 IO.puts(greetings.("Kitaa"))
 
+# another short function
+# instead of modulo = fn a,b -> rem(a,b) end
 modulo = &(rem(&1, &2))
 IO.puts(modulo.(5,4))
+
+# Function default arguments
+# you can pass default arguments to functions, the arguments are evaluated at invocation not function definitio
+# any expression can serve as a default argument
+# declaration format: "argumentname \\ defaultvalue"
+
+defmodule Greetings do
+  def hello(name \\ "Pal") do
+    IO.puts("Hello #{name}")
+  end
+end
+
+Greetings.hello("Alex")
+Greetings.hello() # will print with the default value
+
+# for functions with multiple clauses
+# declare function head with the defaults without a body
+defmodule Concat do
+  def join(a,b \\ nil, sep \\ " ")
+
+  def join(a,b, _sep ) when is_nil(b) do # underscore is used to signal ignore the argument
+    a
+  end
+
+  def join(a,b, sep) do
+    a <> sep <> b
+  end
+end
+
+IO.puts(Concat.join("Alex", "Kitaa"))
+IO.puts(Concat.join("Alex"))
+IO.puts(Concat.join("Alex", "Kitaa", " + "))
