@@ -60,7 +60,7 @@ multiply = &*/2 # multiply operator
 IO.puts(multiply.(2,3))
 
 # capturing functions can also be used to create short functions
-# &(function definition)
+# &(function body)
 name = "Alex"
 greetings = &("Howdy #{&1}") # &1 is the first agrunment, we use #{} to interpolate the passed argument
 IO.puts(greetings.(name))
