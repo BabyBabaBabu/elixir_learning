@@ -1,4 +1,10 @@
 defmodule Math do
+  #define a constant using the @
+  @mydub 2
+  # function call to assign a value to a constant
+  @my_address URI.parse("https://example.com")
+
+  #
   @moduledoc """
   Some basic Math functions
 
@@ -31,7 +37,11 @@ defmodule Math do
   end
 
   def double(num) do
-    num*2
+    num* @mydub
+  end
+
+  def myfunc do
+    IO.puts("Accessing #{@my_address.authority} on port #{@my_address.port} ")
   end
 
 end
