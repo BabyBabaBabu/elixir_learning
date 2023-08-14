@@ -18,7 +18,11 @@ defmodule Math do
   """
 
   @doc """
-  Calculates the square of a number
+  Calculates the square of any number you pass it
+    ## Example
+      iex> Math.square(4)
+          16
+
   """
   def square(num) do
     num*num
@@ -36,6 +40,14 @@ defmodule Math do
     rem(num1,num2)
   end
 
+    @doc """
+    Doubles any integer you pass it
+
+    ## Example
+      iex> Math.double(3)
+          6
+
+  """
   def double(num) do
     num* @mydub
   end
