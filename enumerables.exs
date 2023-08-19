@@ -21,9 +21,11 @@ odd? = &(rem(&1,2) != 0)
 # The Stream module, an alternative to Enum
 # Supports lazy loading compared to Enums
 # Streams are lazy, composable enumerables.
-# Stream operations return a data type
+# Stream operations return a data type, a stream
 # A stream, an enumerable that generates elements one by one, e.g Range
 # useful when working with large (or even infinite) collections
+# streams build a series of computations that are invoked only when we pass the underlying stream to the Enum module
+# Example
 2..10 |> Stream.map(&IO.inspect(&1)) |> Stream.map(&(&1 * 2)) |> Stream.map(&IO.inspect(&1)) |> Enum.to_list()
 # here, each element of the enumerable is run through the stream functions
 # first print the element
