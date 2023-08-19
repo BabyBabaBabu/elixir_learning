@@ -22,6 +22,10 @@ defimpl Utils, for: Integer do
   def type(_value), do: "integer"
 end
 
+defimpl Utils, for: Map do
+  def type(_value), do: "map"
+end
+
 defprotocol Size do
   @doc "Calculates the size (and not the length!) of a data structure"
   def size(data)
