@@ -79,3 +79,49 @@ else
   x
 end
 IO.puts(x)
+
+# with
+# useful for combining matching clauses such as nested case conditions/clauses
+# use with alongside the PATTERN <- EXPRESSION operator
+# attempts to match expression on the right against the pattern on the left
+# incase of match is found the with chain is aborted, an error is returned
+
+myland = %{width: 10, length: 20}
+
+with {:ok, width} <- Map.fetch(myland, :width),
+     {:ok, length} <- Map.fetch(myland, :length) do
+  {:ok, width * length}
+end
+
+# here, the with chain returns an :error, since no match in key :speed is found
+with {:ok, width} <- Map.fetch(myland, :width),
+     {:ok, length} <- Map.fetch(myland, :speed) do
+  {:ok, width * length}
+end
+
+# can include guards in pattern matching
+# here, the with chain returns an error since the pattern matching on the guard fails
+myland2 = %{width: 5, length: 20}
+with {:ok, width} when width > 5 <- Map.fetch(myland2, :width),
+     {:ok, length} <- Map.fetch(myland2, :length) do
+  {:ok, width * length}
+end
+
+# pattern matching may also not require the <- operator, can use the = operator
+myland3 = %{width: 6, length: 20}
+with {:ok, width} when width > 5 <- Map.fetch(myland3, :width),
+     double_width = width * 2, # this is also a pattern match
+     {:ok, length} <- Map.fetch(myland3, :length) do
+  {:ok, double_width * length}
+end
+
+# May include else clause to handle the non-matching clauses of the with chain
+# best to annotate the patterns with tuples so as to correctly handle them in the else clause
+myland4 = %{width: 3, length: 13}
+with {:ok, width} when width < 5 <- Map.fetch(myland4, :width),
+     {:ok, length} <- Map.fetch(myland4, :lenght) do
+  {:ok, width * length}
+else
+  :error -> IO.puts("wrong inputs")
+  {:ok, _} -> IO.puts("something went wrong!")
+end
