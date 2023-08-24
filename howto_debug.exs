@@ -55,3 +55,5 @@ __ENV__.file
 
 # Observer
 # in iex> :observer.start()
+
+# https://www.erlang-in-anger.com/
