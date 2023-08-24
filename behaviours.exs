@@ -40,12 +40,12 @@ end
 defmodule CSVParser do
   @behaviour Parser
 
-  @impl Parser
+  @impl true
   def parse(str) do
     {:ok, "some csv" <> str}
   end
 
-  @impl Parser
+  @impl true
   def extension do
     [".csv"]
   end
