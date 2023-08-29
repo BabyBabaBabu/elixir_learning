@@ -23,10 +23,10 @@ case File.read("C:/Users/alex/Documents/Projects/Elixir Projects/Basics/hellowor
 end
 
 # Use Path for cross platform support when it comes to filepaths
-# case File.read(Path.expand("helloworlds.txt")) do
-#   {:ok, body} -> IO.puts(to_string(body))
-#   {:error, reason} when reason == :enoent -> IO.puts("the file does not exist")
-# end
+case File.read(Path.expand("helloworlds.txt")) do
+  {:ok, body} -> IO.puts(to_string(body))
+  {:error, reason} when reason == :enoent -> IO.puts("the file does not exist")
+end
 
 # server = spawn(fn -> receive do msg -> IO.puts(inspect(msg)) end end)
 # IO.write(server, "Hello World")  # since server has terminated one cannot send to it, ErlangError
